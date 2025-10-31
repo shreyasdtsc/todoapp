@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-
-import Header from "../UI/Header.tsx";
-import Input from "../UI/Input.tsx";
-import List from "../UI/List.tsx";
+import { useState, useEffect } from "react";
+import Header from "../UI/Header";
+import Input from "../UI/Input";
+import List from "../UI/List";
 
 let nextId = 0;
 
@@ -73,7 +72,7 @@ export default function TodoUseEffect() {
 
   return (
     <>
-      <Header toDoList={toDoList} counts={taskCounts} />
+      <Header toDoList={toDoList}/>
       <Input input={input} setInput={setInput} addTask={add} />
       <List
         toDoList={toDoList}

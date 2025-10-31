@@ -18,7 +18,7 @@ export interface TaskCounts {
 }
 
 // Define the full store state and actions
-interface ToDoStore {
+export interface ToDoStore {
   input: string;
   toDoList: Task[];
   setInput: (value: string) => void;
@@ -30,11 +30,12 @@ interface ToDoStore {
 
 let nextId = 0;
 
+// ✅ Explicitly type `set` and `get` using Zustand generics
 const useToDoStore = create<ToDoStore>((set, get) => ({
   input: "",
   toDoList: [],
 
-  setInput: (value: string) => set({ input: value }),
+  setInput: (value) => set({ input: value }),
 
   addTask: () => {
     const input = get().input.trim();
@@ -52,19 +53,19 @@ const useToDoStore = create<ToDoStore>((set, get) => ({
     }));
   },
 
-  updateTaskStatus: (id: number, newStatus: TaskStatus) =>
+  updateTaskStatus: (id, newStatus) =>
     set((state) => ({
       toDoList: state.toDoList.map((task) =>
         task.id === id ? { ...task, taskStatus: newStatus } : task
       ),
     })),
 
-  deleteTask: (id: number) =>
+  deleteTask: (id) =>
     set((state) => ({
       toDoList: state.toDoList.filter((task) => task.id !== id),
     })),
 
-  taskCounts: (): TaskCounts => {
+  taskCounts: () => {
     const tasks = get().toDoList;
     return {
       pending: tasks.filter((t) => t.taskStatus === "pending").length,

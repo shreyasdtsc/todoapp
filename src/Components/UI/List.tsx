@@ -1,5 +1,6 @@
 import React from "react";
-import Items from "./Items.tsx";
+import Items from "./Items";
+
 
 // Reuse Task and TaskStatus from a central type definition if available
 type TaskStatus = "pending" | "ongoing" | "completed";

@@ -66,7 +66,7 @@ export default function TodoUseState() {
 
   return (
     <>
-      <Header toDoList={toDoList} counts={taskCounts} />
+      <Header toDoList={toDoList} />
       <Input input={input} setInput={setInput} addTask={add} />
       <List
         toDoList={toDoList}

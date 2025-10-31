@@ -1,5 +1,3 @@
-import React from "react";
-
 // Reuse shared types if you've defined them elsewhere
 type TaskStatus = "pending" | "ongoing" | "completed";
 
